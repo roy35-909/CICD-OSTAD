@@ -1,0 +1,26 @@
+name: CICD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  print_the_file:
+    runs-on : ubuntu-latest
+
+    steps:
+      - name: Git Clone
+        uses: actions/checkout@v3
+
+      - name: Print The Content of hello.txt
+        run: cat hello.txt
+
+
+
+
