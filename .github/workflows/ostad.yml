@@ -1,18 +1,14 @@
-name: CICD Pipeline
+name: CICD pipeline
 
 on:
   push:
     branches:
-      -  main
-
+      - main
   pull_request:
     branches:
-      -  main
-
-
+      - main
 
 jobs:
-
   print_the_file:
     runs-on : ubuntu-latest
 
@@ -20,8 +16,19 @@ jobs:
       - name: Git Clone
         uses: actions/checkout@v2
 
-      - name: Read the File  
-        run:  cat hello.txt
+      - name: Print The print 
+        run: |
+          cat hello.txt
+          ls 
+          pwd
+
+
+
+
+
+
+
+
 
 
 
