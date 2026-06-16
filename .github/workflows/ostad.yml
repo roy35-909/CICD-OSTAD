@@ -17,6 +17,9 @@ jobs:
       - name: Checkout the home directory
         run : |
           cd /home/ubuntu/CICD-OSTAD
-          ls
+          git pull 
+          pm2 status
+          pm2 restart all
+          
 
           
