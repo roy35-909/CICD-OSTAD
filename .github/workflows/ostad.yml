@@ -17,6 +17,6 @@ jobs:
       - name: Checkout the home directory
         run : |
           cd /home/ubuntu/CICD-OSTAD
-          ll
+          ls
 
           
