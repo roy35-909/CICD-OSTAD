@@ -11,5 +11,12 @@ on:
 jobs:
 
   Deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
+    steps:
+      - name: Checkout the home directory
+        run : |
+          cd /home/ubuntu/CICD-OSTAD
+          ll
+
+          
