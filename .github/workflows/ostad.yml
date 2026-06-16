@@ -9,30 +9,7 @@ on:
       - main
 
 jobs:
-  print_the_file:
-    runs-on : ubuntu-latest
 
-    steps:
-      - name: Git Clone
-        uses: actions/checkout@v2
-
-      - name: Print The print 
-        run: |
-          cat hello.txt
-          ls 
-          pwd
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  Deploy:
+    runs-on: ubuntu-latest
 
