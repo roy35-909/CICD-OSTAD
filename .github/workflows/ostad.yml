@@ -24,10 +24,10 @@ jobs:
 
       
       - name: install packages
-        runs: npm install 
+        run: npm install 
 
       - name: Run the Test
-        runs: npm run test
+        run: npm run test
 
 
 
