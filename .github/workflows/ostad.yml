@@ -41,3 +41,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo apt update && sudo apt install nginx -y
+            
