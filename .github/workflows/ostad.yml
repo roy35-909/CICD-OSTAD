@@ -33,15 +33,18 @@ jobs:
 
 
   Deploy:
-    runs-on: self-hosted
-    needs: Test
-    steps:
-      - name: Checkout the home directory
-        run : |
-          cd /home/ubuntu/CICD-OSTAD
-          git pull 
-          pm2 status
-          pm2 restart all
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: SSH Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo apt update && sudo apt install nginx -y
+
+            
 
           
