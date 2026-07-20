@@ -29,6 +29,21 @@ jobs:
       - name: Print The Hello.txt file
         run: cat hello.txt
 
+  Deploy:
 
+    runs-on: ubuntu-latest 
+    needs: Test
 
-      
+    steps:
+      - name: SSH Commands 
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ var.PORT }}
+          script: |
+            sudo apt update
+            pwd
+            whoami
+            
