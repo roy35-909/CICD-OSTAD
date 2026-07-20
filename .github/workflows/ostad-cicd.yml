@@ -1,0 +1,34 @@
+name: CICD Pipeline 
+
+on:
+  push:
+    branches:
+      - main
+
+
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Clone 
+        uses: actions/checkout@v7
+
+      - name: install node js 
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      
+      - name: Install Packages
+        run: npm install 
+
+      - name: Run the Test 
+        run: npm run test 
+
+      - name: Print The Hello.txt file
+        run: cat hello.txt
+
+
+
+      
