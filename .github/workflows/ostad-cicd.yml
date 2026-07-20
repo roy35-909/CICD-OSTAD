@@ -41,9 +41,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          port: ${{ var.PORT }}
+          port: ${{ vars.PORT }}
           script: |
             sudo apt update
             pwd
             whoami
-            
