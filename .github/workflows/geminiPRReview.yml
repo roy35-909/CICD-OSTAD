@@ -19,5 +19,6 @@ jobs:
         uses: sshnaidm/gemini-code-review-action@v2
         with:
           gemini-key: ${{ secrets.GEMINI_API_KEY }}
-          model: "gemini-2.5-flash"  
+          model: "gemini-3.5-flash"  
           thinking: "off"
+          exclude: "*.json,*.lock,package-lock.json,vendor/**"
