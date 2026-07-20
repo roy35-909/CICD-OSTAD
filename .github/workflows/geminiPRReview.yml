@@ -15,10 +15,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run Gemini Code Review
-        uses: sshnaidm/gemini-code-review-action@v2
+      - name: Run Gemini AI Code Review
+        uses: petarzarkov/gemini-code-review-action@v1
         with:
-          gemini-key: ${{ secrets.GEMINI_API_KEY }}
-          model: "gemini-3.5-flash"  
-          thinking: "off"
-          exclude: "*.json,*.lock,package-lock.json,vendor/**"
+          model: "gemini-2.5-flash"
+          exclude: "*.json,*.lock,package-lock.json,vendor/**,dist/**,*.md"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
