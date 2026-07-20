@@ -1,4 +1,4 @@
-name: "Gemini PR Review"
+name: "Grok AI PR Review"
 
 on:
   pull_request:
@@ -15,9 +15,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run Gemini Review
-        uses: derailed-dash/gemini-review-action@v1
+      - name: Run Grok Code Review
+        uses: tarmojussila/xai-code-review@v0.1.0
         with:
-          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          gemini_model: "gemini-3.5-flash"
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          XAI_MODEL: "grok-3"
+          EXCLUDE_PATTERNS: "*.json,*.lock,package-lock.json,vendor/**,dist/**"
