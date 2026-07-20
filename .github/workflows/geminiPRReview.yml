@@ -2,7 +2,7 @@ name: "Gemini PR Review"
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, ready_for_review]
 
 permissions:
   contents: read
@@ -15,11 +15,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run Gemini AI Code Review
-        uses: petarzarkov/gemini-code-review-action@latest
+      - name: Run Gemini Review
+        uses: derailed-dash/gemini-review-action@v1
         with:
-          model: "gemini-2.5-flash"
-          exclude: "*.json,*.lock,package-lock.json,vendor/**,dist/**,*.md"
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gemini_model: "gemini-3.5-flash"
