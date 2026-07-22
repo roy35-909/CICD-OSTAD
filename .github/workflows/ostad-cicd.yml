@@ -29,21 +29,18 @@ jobs:
       - name: Print The Hello.txt file
         run: cat hello.txt
 
-  # Deploy:
+  Deploy:
 
-  #   runs-on: ubuntu-latest 
-  #   needs: Test
-  #   steps:
-  #     - name: SSH Commands 
-  #       uses: appleboy/ssh-action@v1
-  #       with:
-  #         host: ${{ secrets.HOST }}
-  #         username: ${{ secrets.USERNAME }}
-  #         key: ${{ secrets.KEY }}
-  #         port: ${{ vars.PORT }}
-  #         script: |
-  #           cd ~/ostad/
-  #           git pull
-  #           npm install
-  #           pm2 restart all
-  #           sudo systemctl restart nginx
+    runs-on: self-hosted 
+    needs: Test
+
+    steps:
+      - name: Create A Folder
+        run: |
+          cd ~
+          pwd
+          mkdir ostad
+          cd ostad 
+          touch hello.txt
+          echo "hello world" > hello.txt 
+          

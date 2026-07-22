@@ -1,23 +1,23 @@
-name: "Grok AI PR Review"
+# name: "Grok AI PR Review"
 
-on:
-  pull_request:
-    types: [opened, synchronize, ready_for_review]
+# on:
+#   pull_request:
+#     types: [opened, synchronize, ready_for_review]
 
-permissions:
-  contents: read
-  pull-requests: write
+# permissions:
+#   contents: read
+#   pull-requests: write
 
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+# jobs:
+#   review:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
 
-      - name: Run Grok Code Review
-        uses: tarmojussila/xai-code-review@v0.1.0
-        with:
-          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
-          XAI_MODEL: "grok-3"
-          EXCLUDE_PATTERNS: "*.json,*.lock,package-lock.json,vendor/**,dist/**"
+#       - name: Run Grok Code Review
+#         uses: tarmojussila/xai-code-review@v0.1.0
+#         with:
+#           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+#           XAI_MODEL: "grok-3"
+#           EXCLUDE_PATTERNS: "*.json,*.lock,package-lock.json,vendor/**,dist/**"
