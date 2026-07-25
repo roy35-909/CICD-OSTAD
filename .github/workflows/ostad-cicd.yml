@@ -24,17 +24,26 @@ jobs:
         run: npm install 
 
       - name: Run the Test 
-        run: npm run test 
+        run: npm run test > test.txt
 
+      - name: Upload the Artifact 
+        uses: actions/upload-artifact@v7
+        with:
+          path: ./test.txt
+          
       - name: Print The Hello.txt file
         run: cat hello.txt
 
-  Deploy:
 
+
+
+
+  Deploy:
     runs-on: ubuntu-latest 
-    needs: Test
+    needs: Test 
+
     steps:
-      - name: SSH Commands 
+      - name: Connect To the Server.
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
@@ -42,8 +51,14 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ vars.PORT }}
           script: |
-            cd ~/ostad/
-            git pull
-            npm install
-            pm2 restart all
-            sudo systemctl restart nginx
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/ostad
+            cd /home/ubuntu/CICD-OSTAD
+            git pull 
+            npm install 
+            pm2 restart 0
+            sudo systemctl restart nginx 
+
+
+
+
