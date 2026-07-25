@@ -51,6 +51,8 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ vars.PORT }}
           script: |
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/ostad
             cd /home/ubuntu/CICD-OSTAD
             git pull 
             npm install 
